@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 export default function ProductPage() {
-    const API_BASE = "http://localhost:8080";
+    const API_BASE = "http://backend:8080";
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
