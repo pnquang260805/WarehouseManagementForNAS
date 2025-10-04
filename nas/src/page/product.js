@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 export default function ProductPage() {
-    const API_BASE = "http://backend:8080";
+    const REACT_APP_API_BASE = "/api";
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -35,8 +35,8 @@ export default function ProductPage() {
         setError(null);
         try {
             const url = query
-                ? `${API_BASE}/products/search?name=${encodeURIComponent(query)}`
-                : `${API_BASE}/products`;
+                ? `${REACT_APP_API_BASE}/products/search?name=${encodeURIComponent(query)}`
+                : `${REACT_APP_API_BASE}/products`;
             const res = await fetch(url);
             if (!res.ok) throw new Error(`HTTP ${res.status}`);
             const data = await res.json();
@@ -90,7 +90,7 @@ export default function ProductPage() {
         try {
             if (editing) {
                 // PUT /products/{id}
-                const res = await fetch(`${API_BASE}/products/${editing.id}`, {
+                const res = await fetch(`${REACT_APP_API_BASE}/products/${editing.id}`, {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ ...editing, ...form }),
@@ -100,7 +100,7 @@ export default function ProductPage() {
                 setProducts((prev) => prev.map((p) => (p.id === updated.id ? updated : p)));
             } else {
                 // POST /products
-                const res = await fetch(`${API_BASE}/products`, {
+                const res = await fetch(`${REACT_APP_API_BASE}/products`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(form),
@@ -118,7 +118,7 @@ export default function ProductPage() {
     async function handleDelete(id) {
         if (!window.confirm("Xác nhận xóa sản phẩm này?")) return;
         try {
-            const res = await fetch(`${API_BASE}/products/${id}`, { method: "DELETE" });
+            const res = await fetch(`${REACT_APP_API_BASE}/products/${id}`, { method: "DELETE" });
             if (!res.ok) throw new Error(`HTTP ${res.status}`);
             setProducts((prev) => prev.filter((p) => p.id !== id));
         } catch (err) {
@@ -128,7 +128,7 @@ export default function ProductPage() {
 
     async function handleProvider(id) {
         try {
-            const res = await fetch(`${API_BASE}/providers/${id}`, { method: "GET" });
+            const res = await fetch(`${REACT_APP_API_BASE}/providers/${id}`, { method: "GET" });
             if (!res.ok) throw new Error(`HTTP ${res.status}`);
             const data = await res.json();
             return data.name; // Trả về tên nhà cung cấp
