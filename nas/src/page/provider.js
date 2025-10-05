@@ -45,7 +45,7 @@ export default function AddProviderPage() {
         setLoading(true);
         try {
             const body = { name: name.trim(), headOfficeLocation: headOfficeLocation.trim() };
-            const res = await fetch(API_BASE, {
+            const res = await fetch(`${API_BASE}/providers`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body),
