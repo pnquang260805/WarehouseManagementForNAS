@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import ProductPage from './page/product';
+import AddProviderPage from './page/provider'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -13,6 +14,7 @@ root.render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/products" element={<ProductPage />} />
+        <Route path="/provider" element={<ProductPage />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
