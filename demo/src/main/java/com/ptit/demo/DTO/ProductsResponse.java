@@ -18,5 +18,5 @@ public class ProductsResponse {
     String imgUrl;
     BigDecimal pricePerUnit;
     Integer providerId;
-    List<Integer> purchaseOrdersId;
+    List<Integer> stockId;
 }

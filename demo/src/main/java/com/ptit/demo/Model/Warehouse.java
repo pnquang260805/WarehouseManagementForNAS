@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -17,9 +18,11 @@ public class Warehouse {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
+
     String name;
     String location;
 
+    @Builder.Default
     @OneToMany(mappedBy = "warehouse", cascade = CascadeType.ALL)
-    List<PurchaseOrder> purchaseOrders;
+    List<Stock> stocks = new ArrayList<>();
 }

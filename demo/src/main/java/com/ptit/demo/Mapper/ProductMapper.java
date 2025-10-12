@@ -11,9 +11,9 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface ProductMapper {
     @Mapping(target = "providerId", expression = "java(product.getProviders().getId())")
-    @Mapping(target = "purchaseOrdersId", expression = "java(product.getPurchaseOrders().stream().map(p -> p.getId()).toList())")
+    @Mapping(target = "stockId", expression = "java(product.getStocks().stream().map(p -> p.getId()).toList())")
     ProductsResponse toResponse(Products product);
-    List<ProductsResponse> toResponse(List<Products> products);
+    List<ProductsResponse> toResponse(List<Products> product);
 
     Products toProduct(ProductRequest request);
 }

@@ -19,15 +19,17 @@ public class Products {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
+
     String productName;
     String description;
     BigDecimal pricePerUnit;
     String imgUrl;
+
     @ManyToOne
     @JoinColumn(name = "provider_id")
     Providers providers;
 
     @Builder.Default
-    @OneToMany(mappedBy = "products", cascade = CascadeType.ALL)
-    List<PurchaseOrder> purchaseOrders = new ArrayList<>();
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    List<Stock> stocks = new ArrayList<>();
 }
