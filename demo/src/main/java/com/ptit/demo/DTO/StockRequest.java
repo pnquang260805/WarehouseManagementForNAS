@@ -3,16 +3,14 @@ package com.ptit.demo.DTO;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.util.List;
-
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class WarehouseResponse {
-    Integer id;
-    String name;
-    String location;
-    List<Integer> stockIds;
+public class StockRequest {
+    Integer productId;
+    Integer warehouseId;
+    Long quantity;
+    String type;
 }

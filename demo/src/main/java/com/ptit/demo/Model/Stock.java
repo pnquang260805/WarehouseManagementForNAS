@@ -9,7 +9,7 @@ import java.time.LocalDate;
 @Entity
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@Table(name = "providers")
+@Table(name = "stocks")
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
